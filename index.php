@@ -63,9 +63,12 @@ if($_GET['page']=='referals'){$no404=true;include('pages/referals.php');}
 if($_GET['page']=='restore'){$no404=true;include('pages/restore.php');}
 if($_GET['page']=='pay_card'){$no404=true;include('pages/pay_card.php');}
 if($_GET['page']=='pay_phone'){$no404=true;include('pages/pay_phone.php');}
+<<<<<<< HEAD
 if($_GET['page']=='activate2'){$no404=true;include('pages/activate.php');}
 
 
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 //if($_GET['page']=='test_server'){$no404=true;include('pages/test_server.php');}
 if(!$no404){header("HTTP/1.0 404 Not Found");
 header("HTTP/1.1 404 Not Found");
@@ -124,7 +127,11 @@ flush();
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, 'https://edge.qiwi.com/funding-sources/v1/accounts/current');
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);   
+<<<<<<< HEAD
 curl_setopt($curl, CURLOPT_TIMEOUT, 20);
+=======
+curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 $infos=mysqli_query($mysqli,"SELECT token, amount FROM settings WHERE title='bankomat'");
 foreach($infos as $info){
 	//sleep(0.3);
@@ -147,7 +154,11 @@ foreach($infos as $info){
     
     if((time()-$upd*60)>strtotime(get_bank_time($mysqli, $b))){//if(time()+($upd*60)>filemtime('bankbalance'.$b) && $token != ""){
             //обновление счета
+<<<<<<< HEAD
             if( $token != '' and $b !=8 and $b!=9) {
+=======
+            if( $token != '') {
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
                 curl_setopt($curl, CURLOPT_HTTPHEADER, array(
                     'Accept: application/json',
                     'Content-Type: application/json',
@@ -170,13 +181,18 @@ foreach($infos as $info){
                 `echo " out_count: "  $out_count >>/home/bartercoin/tmp/qaz_check_bal`;
                 `echo " out_err: "  $out_err >>/home/bartercoin/tmp/qaz_check_bal`;
 
+<<<<<<< HEAD
 
+=======
+            }
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
         
             $out_count = json_decode($out_count);
             $out_count = $out_count->accounts[0]->balance->amount;
             
             //`echo " out_count: "  $out_count >>/home/bartercoin/tmp/qaz`;
             
+<<<<<<< HEAD
     }
             else
             {           $curlP = curl_init();
@@ -201,6 +217,9 @@ foreach($infos as $info){
 
         put_bank($mysqli, $b, $out_count);//file_put_contents('/home/bartercoin/tmp/bankbalance'.$b, $out_count);
 
+=======
+            put_bank($mysqli, $b, $out_count);//file_put_contents('/home/bartercoin/tmp/bankbalance'.$b, $out_count);
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
     }
 }
 curl_close($curl);

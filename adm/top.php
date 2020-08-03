@@ -26,9 +26,13 @@
 					<ul class="dropdown-menu">
 						<li><a href="/adm/?settings=11">Автопополнение из 7-го в 1-й</a></li>
 						<li><a href="/adm/?settings=12">Автопополнение из 5-го в 7-й</a></li>
+<<<<<<< HEAD
                         <li><a href="/adm/?settings=13">Автопополнение из 9-го в 8-й</a></li>
 
                         <li><a href="/adm/?settings=4">Настройки банкоматов</a></li>
+=======
+						<li><a href="/adm/?settings=4">Настройки банкоматов</a></li>
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 						<li><a href="/adm/?settings=2">Настройки приглашений</a></li>
 						<li><a href="/adm/?settings=3">Рассылка</a></li>
 						<li><a href="/adm/?settings=6">Настройка звонков</a></li>

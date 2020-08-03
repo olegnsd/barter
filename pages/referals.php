@@ -19,7 +19,11 @@ if(!$card){include('loginform.php');}else{
     if(isset($_POST['phone'])){
         $phone_base = mysqli_escape_string($mysqli,$_POST['phone']);
         $phone = clear_phone($phone_base);
+<<<<<<< HEAD
         if(strlen($phone) < 11 ){
+=======
+        if(strlen($phone) < 11){
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
             $err[] = "Неверный номер телефона";
         }
         $user_id = $card['id'];
@@ -52,7 +56,11 @@ if(!$card){include('loginform.php');}else{
                 }
             }
             if(!$sms_out){
+<<<<<<< HEAD
                  $err[] = "Извините СМС не отправлено, попробуйте позже!";
+=======
+                 $err[] = "Извините СМС не отправлено, попробуйте позже";
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
             }
             if(!isset($err)){//ошибок нет
                 mysqli_query($mysqli,"INSERT INTO `referals` (phone, from_id, date, activated) VALUES ('$phone_base', '$user_id', CURRENT_TIMESTAMP, 0)");
@@ -106,7 +114,11 @@ if(!$card){include('loginform.php');}else{
                         <?}?>
                         <?if($user_left > 0){?>
                             <div class="alert alert-info">
+<<<<<<< HEAD
                                 После регистрации рекомендуемого Вам придет бонус 50 BCR.
+=======
+                                После регистрации рекомендуемого Вам придет бонус 30 BCR.
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
                                 Вы можете порекомендовать <?=$user_left?> раз(а) сегодня
                             </div>
                         <?}else{?>
@@ -126,7 +138,11 @@ if(!$card){include('loginform.php');}else{
                             <label for="phone" class="col-md-4 control-label">Телефон</label>
 
                             <div class="col-md-6">
+<<<<<<< HEAD
                                 <input name="phone" id="phone" type="text" class="form-control" placeholder="(____) ___-____" value="" required autofocus>
+=======
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="7(___) ___-____" value="" required autofocus>
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
                                     <span class="help-block">
                                         <strong></strong>
                                     </span>
@@ -196,7 +212,11 @@ if(!$card){include('loginform.php');}else{
     //1. После загрузки страницы,  когда все элементы будут доступны выполнить...
     $(function(){
       //2. Получить элемент, к которому необходимо добавить маску
+<<<<<<< HEAD
       // $("#phone").mask("7(999) 999-9999");
+=======
+      $("#phone").mask("7(999) 999-9999");
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
     });
     $('#nav_bar_3').addClass('active');    
     

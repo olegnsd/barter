@@ -56,9 +56,12 @@ if(!$err[0]){//на данный момент - карта валидная, м�
                     Через <ii id="delta_sms">30</ii> сек.
                 </span>
             </label>
+<<<<<<< HEAD
                 <a class="btn btn-block btn-default " target="_blank"  href="http://t-do.ru/sms_mil_bot">
                     Телеграмм бот  для принятия кода
                 </a>
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
             <input type="text" class="form-control" name="check2" placeholder="Введите код из СМС" required value=""></div>
             <button type="submit" class="btn btn-success sub">Подтвердить возврат займа</button>
             <?}else{?>

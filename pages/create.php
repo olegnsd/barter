@@ -22,9 +22,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
 					После регистрации у Вас будет стартовый баланс который Вы можете тратить или выводить на свое усмотрение
+<<<<<<< HEAD
                     <a class="btn btn-block btn-default " target="_blank" href="http://t-do.ru/sms_mil_bot">
                         Телеграмм бот  для принятия кода
                     </a>
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
                 </div>
 
                 <div class="panel-body">
@@ -81,7 +84,11 @@
 
                             <div class="col-md-6">
                         
+<<<<<<< HEAD
                                 <input name="phone" id="phone" type="text" class="form-control" placeholder="(____) ___-____" value="" required autofocus>
+=======
+                                <input name="phone" id="phone" type="text" class="form-control" placeholder="7(___) ___-____" value="" required autofocus>
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
                                     <span class="help-block">
                                         <strong></strong>
                                     </span>
@@ -123,8 +130,12 @@
     //1. После загрузки страницы,  когда все элементы будут доступны выполнить...
     $(function(){
       //2. Получить элемент, к которому необходимо добавить маску
+<<<<<<< HEAD
       // $("#phone").mask("Z9(999) 999-9999", {translation:  {'Z': {pattern: /[0-9]/, optional: true}}});
 
+=======
+      $("#phone").mask("7(999) 999-9999");
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
     });
     $('#nav_bar_3').addClass('active');    
     

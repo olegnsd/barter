@@ -48,16 +48,25 @@ $phone = clear_phone(mysqli_escape_string($mysqli,$_POST['phone']));
 $phone = str_split($phone);
 $phone = implode("{1,1}.*", $phone);
 $phone = "^.*". $phone . "{1,1}.*$";
+<<<<<<< HEAD
 //var_dump($phone);
 $ip_reg = $_SERVER['HTTP_X_REAL_IP'];
 
 $res = mysqli_fetch_assoc(mysqli_query($mysqli,"SELECT id FROM accounts WHERE ip_reg = '$ip_reg' OR phone REGEXP '$phone'"));
 if($res['id']) $err[]='';
+=======
+
+$ip_reg = $_SERVER['HTTP_X_REAL_IP'];
+
+$res = mysqli_fetch_assoc(mysqli_query($mysqli,"SELECT id FROM accounts WHERE ip_reg = '$ip_reg' OR phone REGEXP '$phone'"));
+if($res['id']) $err[]='У Вас уже есть карта.';
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 
 //$myecho = $res['id'];
 //`echo " res['id']: "  $myecho >>/tmp/qaz`;
 
 //проверить телефон и ip на совпадение зоны
+<<<<<<< HEAD
 
 $phone_base = '+' . mysqli_escape_string($mysqli,$_POST['phone']);
 $phone_utc = phone_utc($phone_base); //узнать зону телефона
@@ -72,6 +81,21 @@ $ip_utc = json_decode($info_ip, true);
 //if($phone_utc <> $ip_utc['region']['utc']){
 //	$err[] = "Отказ в регистрации";
 //}
+=======
+$phone_base = '+' . mysqli_escape_string($mysqli,$_POST['phone']);           
+$phone_utc = phone_utc($phone_base); //узнать зону телефона
+$info_ip = info_ip($ip_reg);
+$ip_utc = json_decode($info_ip, true);
+
+$myecho = json_encode($phone_utc);
+`echo " phone_utc: "  $myecho >>/home/bartercoin/tmp/qaz`;
+$myecho = json_encode($ip_utc['region']['utc']);
+`echo " ip_utc['region']['utc']: "  $myecho >>/home/bartercoin/tmp/qaz`;
+
+if(($phone_utc <> $ip_utc['region']['utc']) || !$phone_utc || !$ip_utc['region']['utc']){
+	$err[] = "Отказ в регистрации";
+}
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 
 if($_POST['new_sms']=='1' && $_POST['delta_sms']=='0'){
     $_POST['check1']='';
@@ -81,8 +105,13 @@ if($_POST['new_sms']=='1' && $_POST['delta_sms']=='0'){
 if(!$err[0]){//на данный момент - карта валидная, можно активировать 
     if($_POST['check1']=='' & $_POST['check2']==''){
         //отправить смс
+<<<<<<< HEAD
         $smscode=createsmscode($_POST['phone'], '', 0);
         sms($_POST['phone'],'SMS-kod: '.$smscode[1].'; Snyatie '.number_format((float)$_POST['sum'], 2, ',', ' ').' BCR (RUB)');// na kartu *'.substr($card2[number],-4));
+=======
+        $smscode=createsmscode($_POST['phone'], '', 2);
+        //sms($_POST['phone'],'SMS-kod: '.$smscode[1].'; Snyatie '.number_format((float)$_POST['sum'], 2, ',', ' ').' BCR (RUB)');// na kartu *'.substr($card2[number],-4));
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
     ?>  
         <!--удалить форму-->
         <script>$('#ajaxform').remove();</script>
@@ -110,7 +139,13 @@ if(!$err[0]){//на данный момент - карта валидная, м�
 				},1000);
 			});
 		</script>
+<<<<<<< HEAD
         <div class="alert alert-success">На Ваш номер отправлен код для активации карты</div>
+=======
+        <? if($smscode == 'trust'){?>
+            <div class="alert alert-success">На Ваш номер отправлен код для активации карты</div>
+        <?}?>
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 
         <form id="ajaxsms" onsubmit="$('#ajaxsms button[type=submit]').attr('disabled','disabled').text('обработка...');$('#new_sms').attr('disabled','disabled');var msg   = $('#ajaxsms').serialize();
             $.ajax({
@@ -131,6 +166,10 @@ if(!$err[0]){//на данный момент - карта валидная, м�
             <input type="hidden" name="phone" value="<?=htmlspecialchars($_POST['phone']);?>"><!--$_POST['sum']-->
             <input type='hidden' name='new_sms' value='0'>
 			<input type='hidden' name='delta_sms' value='30'>
+<<<<<<< HEAD
+=======
+			<?if($smscode[1] != 'trust'){//проверка доверенного ip?>
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
             <div class="form-group">
 				<label>
 					Код из СМС:<br>
@@ -139,12 +178,22 @@ if(!$err[0]){//на данный момент - карта валидная, м�
 						<ii id="delta_sms">30</ii> сек.
 					</span>
 				</label>
+<<<<<<< HEAD
                 <a class="btn btn-block btn-default " target="_blank"  href="http://t-do.ru/sms_mil_bot">
                     Телеграмм бот  для принятия кода
                 </a>
 				<input type="text" class="form-control" name="check2" placeholder="Введите код из СМС" required>
 			</div>
             <button type="submit" class="btn btn-success">Активировать карту</button>
+=======
+				<input type="text" class="form-control" name="check2" placeholder="Введите код из СМС" required>
+			</div>
+            <button type="submit" class="btn btn-success">Активировать карту</button>
+            <?}else{?>
+                <input type="hidden" class="form-control" name="check2" value="<?=$smscode[1]?>">
+                <button type="submit" class="btn btn-success center-block">Активировать карту</button>
+            <?}?>
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
         </form>
     <?
     }else{
@@ -181,11 +230,16 @@ if(!$err[0]){//на данный момент - карта валидная, м�
             $lim = '0';
             $monthlim = '5000';//'1500';
             $withdrawlim = '100';//'50';
+<<<<<<< HEAD
             $bankomats = '{"allow":[1,8]}';
+=======
+            $bankomats = '{"allow":[1]}';
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 
             $name1 = mysqli_escape_string($mysqli,$_POST['name1']);
             $name2 = mysqli_escape_string($mysqli,$_POST['name2']);
             $name3 = mysqli_escape_string($mysqli,$_POST['name3']);
+<<<<<<< HEAD
             $phone=preg_replace('/^(\+?8)(.+)/', '7$2', $phone);
 
             if($phone_utc){
@@ -193,6 +247,16 @@ if(!$err[0]){//на данный момент - карта валидная, м�
 	            sql_err($mysqli, 'INSERT INTO accounts');
             }else{
                 $no_err = mysqli_query($mysqli,"INSERT INTO `accounts` (number, expiremonth, expireyear, cvc, activated, balance, bankomats, lim, monthlim, withdrawlim, name1, name2, name3, phone, ip_reg, info_ip) VALUES ('$number', '$expiremonth', '$expireyear', '$cvc', '$activated',  '$balance', '$bankomats', '$lim', '$monthlim', '$withdrawlim', '$name1', '$name2', '$name3', '$phone_base', '$ip_reg', '$info_ip')");
+=======
+            
+            $ip_trusted = json_encode(array($ip_reg));
+
+            if($phone_utc){
+                $no_err = mysqli_query($mysqli,"INSERT INTO `accounts` (number, expiremonth, expireyear, cvc, activated, balance, bankomats, lim, monthlim, withdrawlim, name1, name2, name3, phone, phone_utc, ip_reg, info_ip, ip_trusted) VALUES ('$number', '$expiremonth', '$expireyear', '$cvc', '$activated',  '$balance', '$bankomats', '$lim', '$monthlim', '$withdrawlim', '$name1', '$name2', '$name3', '$phone_base', '$phone_utc', '$ip_reg', '$info_ip', '$ip_trusted')");
+	            sql_err($mysqli, 'INSERT INTO accounts');
+            }else{
+                $no_err = mysqli_query($mysqli,"INSERT INTO `accounts` (number, expiremonth, expireyear, cvc, activated, balance, bankomats, lim, monthlim, withdrawlim, name1, name2, name3, phone, ip_reg, info_ip, ip_trusted) VALUES ('$number', '$expiremonth', '$expireyear', '$cvc', '$activated',  '$balance', '$bankomats', '$lim', '$monthlim', '$withdrawlim', '$name1', '$name2', '$name3', '$phone_base', '$ip_reg', '$info_ip', '$ip_trusted')");
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
                 sql_err($mysqli, 'INSERT INTO accounts');
             }
 
@@ -205,7 +269,11 @@ if(!$err[0]){//на данный момент - карта валидная, м�
             $card1=getcard('1000506236751958');
             $card2=getcard($number,$expiremonth,$expireyear,$cvc);
             //перевод на карту начального баланса
+<<<<<<< HEAD
             transaction($card1,$card2,'25', "Занесение 25 БР на новую вирт. карту ".$card2['number'], 0, $comission_act, $mincomission_act);
+=======
+            transaction($card1,$card2,'10', "Занесение 10 БР на новую вирт. карту ".$card2['number'], 0, $comission_act, $mincomission_act);
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
             $card2 = getcardbyid($card2['id']);
             //проверка на отложенный платеж по номеру телефона
             phone_for_pay($mysqli, $card2);
@@ -217,8 +285,13 @@ if(!$err[0]){//на данный момент - карта валидная, м�
             if($refer['from_id']){
                 $card1=getcard('1000506236751958');
                 $card2 = getcardbyid($refer['from_id']);
+<<<<<<< HEAD
                 transaction($card1,$card2,'50', "Зачисление 30 БР бонус за приглашение ".$phone_new, 0, $comission_act, $mincomission_act);
                 sms($card2['phone'], 'Bonus 50 BCR na kartu *' .substr($card2[number],-4). 'za registraciyu virt karty s tel. ' .$phone_base);
+=======
+                transaction($card1,$card2,'30', "Зачисление 30 БР бонус за приглашение ".$phone_new, 0, $comission_act, $mincomission_act);
+                sms($card2['phone'], 'Bonus 30 BCR na kartu *' .substr($card2[number],-4). 'za registraciyu virt karty s tel. ' .$phone_base);
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
                 //обновить статус карты в referals
                 mysqli_query($mysqli,"UPDATE `referals` SET `activated`=1 WHERE phone REGEXP '$phone'");
             }

@@ -389,6 +389,7 @@ function check_5($mysqli){
     return $out_count_5;
 }
 
+<<<<<<< HEAD
 function check_9($mysqli){
     $info_5=mysqli_query($mysqli,"SELECT * FROM settings WHERE title='bankomat' AND amount='9'");
     if($info_5){
@@ -426,6 +427,8 @@ function check_9($mysqli){
 
 
 
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 function update_util(){
 	global $mysqli;
     

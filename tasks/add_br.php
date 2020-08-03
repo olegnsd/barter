@@ -177,10 +177,15 @@ class add_class{
         mysqli_query($mysqli, "INSERT INTO qaz_add_br (event) values('$myecho')");
         
         //подлив из 7 в 1
+<<<<<<< HEAD
 #        $linkas_qiwi = '+79295841764';//'+79295842531';//1-й bankomat
 #        $linkas_qiwi = '+79859452651';//'+79295842531';//1-й bankomat
         $linkas_qiwi = '+79154197372';//'+79295842531';//1-й bankomat
 
+=======
+        $linkas_qiwi = '+79295841764';//'+79295842531';//1-й bankomat
+#        $linkas_qiwi = '+79859452651';//'+79295842531';//1-й bankomat
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
         $comment = "Подлив из 7 в 1 банкомат";
         $out = $this->add_br_f($amount, $info_7, $linkas_qiwi, $comment);
 

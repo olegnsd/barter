@@ -83,6 +83,7 @@ if($_GET['settings']=="11"){
         <input type="submit" class="btn btn-success" value="Войти">
         </form>
     <?}
+<<<<<<< HEAD
 }elseif($_GET['settings']=="13"){
     if($auth){
         $no404=true;
@@ -94,6 +95,8 @@ if($_GET['settings']=="11"){
             <input type="submit" class="btn btn-success" value="Войти">
         </form>
     <?}
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 }elseif($_GET['settings']=="2"){
     if($auth){
         $no404=true;

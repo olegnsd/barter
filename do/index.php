@@ -106,9 +106,12 @@ if(!$card_pay == 1){?>
             Через <ii id="delta_sms">30</ii> сек.
         </span>
     </label>
+<<<<<<< HEAD
     <a class="btn btn-block btn-default " target="_blank"  href="http://t-do.ru/sms_mil_bot">
         Телеграмм бот  для принятия кода
     </a>
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 </form>
 <?}?>
 <script src="../js/jquery.min.js"></script>
@@ -276,16 +279,22 @@ if($operation==2 && strlen($_POST['tophone']) >= 10){
         <label>
             <br>
             <button type="button" id="new_sms" class="btn btn-info" disabled>Выслать код повторно</button>
+<<<<<<< HEAD
             <a class="btn btn-block btn-default " target="_blank"  href="http://t-do.ru/sms_mil_bot">
                 Телеграмм бот  для принятия кода
             </a>
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
             <span class='label label-info' role='alert'>
                 Через <ii id="delta_sms">30</ii> сек.
             </span>
         </label>
+<<<<<<< HEAD
         <a class="btn btn-block btn-default " target="_blank"  href="http://t-do.ru/sms_mil_bot">
             Телеграмм бот  для принятия кода
         </a>
+=======
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
     </form>
     <?}?>
     <script src="../js/jquery.min.js"></script>
@@ -398,7 +407,11 @@ if($operation==5){include('stock.php');
 
 if($operation==6){include('pay2.php');
 }
+<<<<<<< HEAD
 //Активация
+=======
+
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 if($operation==1){
 $card1=getcard($_POST['fromnum'],$_POST['frommonth'],$_POST['fromyear'],$_POST['fromcvc'],0);
 if($card1['id']==0)$err[]='Вы ввели неверные данные карты';

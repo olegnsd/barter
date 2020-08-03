@@ -27,6 +27,10 @@ if(!in_array($account['role'],array(0,1)))$account['role']=0;
 
 
 }
+<<<<<<< HEAD
 #if($_GET['logout']=='land'){session_destroy();header('Location: '.$baseHrefLand);die();}
+=======
+if($_GET['logout']=='land'){session_destroy();header('Location: '.$baseHrefLand);die();}
+>>>>>>> 000cde20380f922cdb2564f52823038b295bb1ca
 if(isset($_GET['logout'])){session_destroy();header('Location: '.$baseHref);die();}
 ?>
